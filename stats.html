@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistik & Riwayat - Percetakan 21</title>
+  <link rel="stylesheet" href="css/owner.css"> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { padding: 20px; }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .stat-item {
+      background: var(--bg);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+    }
+    .stat-item h4 { margin: 0 0 5px 0; opacity: 0.8; font-size: 14px; }
+    .stat-item p { margin: 0; font-size: 24px; font-weight: 700; color: var(--accent); }
+    .chart-container {
+      position: relative;
+      margin: auto;
+      height: 40vh;
+      width: 80vw;
+      max-width: 900px;
+    }
+    table th, table td { padding: 12px 15px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="title"><strong>Percetakan 21</strong> - Statistik & Riwayat</div>
+    <a href="index.html" class="btn btn-blue" style="text-decoration: none; margin-right: 10px;">Halaman Kasir</a>
+    <a href="owner.html" class="btn btn-blue" style="text-decoration: none;">Halaman Owner</a>
+    <div class="debug-module" style="background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 5px 10px; margin-left: 15px;"> <div class="debug-label" style="font-size: 10px;">WAKTU (WITA)</div> <div class="debug-value" id="wita-clock" style="font-size: 18px; font-weight: 700; color: var(--accent);">--:--:--</div> </div>
+  </header>
+
+  <main>
+  <main>
+    <section id="sales-statistics" class="stat-card">
+      <h2>Statistik Penjualan</h2>
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
+    </section>
+
+    <section id="angel-statistics" class="stat-card">
+      <h3>Statistik Angel</h3>
+      <div class="chart-container">
+        <canvas id="angelChart"></canvas>
+      </div>
+    </section>
+
+    <section id="owner-statistics" class="stat-card">
+      <h3>Statistik Owner</h3>
+      <div class="chart-container">
+        <canvas id="ownerChart"></canvas>
+      </div>
+    </section>
+
+    <section id="order-history" class="stat-card">
+      <h2>Riwayat Orderan</h2>
+      <table id="history-table">
+        <thead>
+          <tr id="history-table-header">
+            <!-- Header akan di-generate oleh JS -->
+          </tr>
+        </thead>
+        <tbody id="history-table-body">
+          <!-- Rows akan di-generate oleh JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/stats.js"></script>
+  <script src="js/clock.js"></script>
+</body>
+</html>
