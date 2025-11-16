@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Dokumentasi Tabel Gaji - Monitor</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #26a69a;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #26a69a;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+        .feature-box {
+            background: #f8f9fa;
+            border-left: 5px solid #26a69a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .feature-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .table-demo {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .table-demo th, .table-demo td {
+            border: 1px solid #34495e;
+            padding: 12px;
+            text-align: left;
+        }
+        .table-demo th {
+            background: #2c3e50;
+            color: white;
+            font-weight: 700;
+        }
+        .table-demo tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .table-demo tbody tr:last-child {
+            border-top: 2px solid #26a69a;
+            font-weight: 700;
+            color: #26a69a;
+            background: #e8f5e9 !important;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .badge-new { background: #4caf50; color: white; }
+        .badge-update { background: #2196f3; color: white; }
+        .badge-info { background: #ff9800; color: white; }
+        .steps {
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .steps ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        .steps li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .button-demo {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #26a69a;
+            color: white;
+            border-radius: 8px;
+            margin: 5px;
+            font-weight: 700;
+        }
+        .button-demo.active {
+            background: #00897b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Dokumentasi: Tabel Gaji Kasir Angel</h1>
+        
+        <div class="feature-box">
+            <h3><span class="badge badge-new">BARU</span> Fitur Tabel Gaji</h3>
+            <p>Tabel gaji baru telah ditambahkan di halaman <strong>monitor.html</strong> untuk menampilkan ringkasan gaji Kasir Angel berdasarkan data shift.</p>
+        </div>
+
+        <h2>📋 Contoh Tampilan Tabel</h2>
+        <table class="table-demo">
+            <thead>
+                <tr>
+                    <th>Tanggal</th>
+                    <th>Jam Mulai</th>
+                    <th>Jam Tutup</th>
+                    <th>Durasi</th>
+                    <th>Gaji Pokok</th>
+                    <th>Total Bonus</th>
+                    <th>Total Gaji</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2025-01-10</td>
+                    <td>08:00:00</td>
+                    <td>16:30:00</td>
+                    <td>8j 30m</td>
+                    <td>Rp 42.500</td>
+                    <td>Rp 125.000</td>
+                    <td>Rp 167.500</td>
+                </tr>
+                <tr>
+                    <td>2025-01-11</td>
+                    <td>09:00:00</td>
+                    <td>18:00:00</td>
+                    <td>9j 0m</td>
+                    <td>Rp 45.000</td>
+                    <td>Rp 230.000</td>
+                    <td>Rp 275.000</td>
+                </tr>
+                <tr>
+                    <td>2025-01-12</td>
+                    <td>08:30:00</td>
+                    <td>17:00:00</td>
+                    <td>8j 30m</td>
+                    <td>Rp 42.500</td>
+                    <td>Rp 180.000</td>
+                    <td>Rp 222.500</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">TOTAL</td>
+                    <td>Rp 130.000</td>
+                    <td>Rp 535.000</td>
+                    <td>Rp 665.000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🎯 Fitur Utama</h2>
+        
+        <div class="feature-box">
+            <h3>1. Filter Periode</h3>
+            <p>Tabel dilengkapi dengan filter untuk menampilkan data berdasarkan periode:</p>
+            <div style="margin: 15px 0;">
+                <span class="button-demo">Hari Ini</span>
+                <span class="button-demo">Pekan Ini</span>
+                <span class="button-demo active">Bulan Ini</span>
+                <span class="button-demo">Semua</span>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <h3>2. Perhitungan Durasi Otomatis</h3>
+            <p>Sistem secara otomatis menghitung durasi kerja dari jam mulai dan jam tutup shift dalam format:</p>
+            <div class="code-block">
+Contoh: 8j 30m (8 jam 30 menit)
+Contoh: 10j 15m (10 jam 15 menit)
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <h3>3. Total Otomatis</h3>
+            <p>Baris TOTAL di akhir tabel menampilkan:</p>
+            <ul>
+                <li><strong>Total Gaji Pokok:</strong> Jumlah semua gaji pokok dalam periode</li>
+                <li><strong>Total Bonus:</strong> Jumlah semua bonus dalam periode</li>
+                <li><strong>Total Gaji:</strong> Grand total (Gaji Pokok + Bonus)</li>
+            </ul>
+        </div>
+
+        <h2>🔧 Detail Teknis</h2>
+
+        <div class="steps">
+            <h3>Data Source:</h3>
+            <div class="code-block">
+Endpoint: GET /api/shifts?cashier=Angel&startDate=...&endDate=...
+Collection: MongoDB - "shifts"
+            </div>
+        </div>
+
+        <div class="steps">
+            <h3>Field yang Digunakan:</h3>
+            <ul>
+                <li><code>date</code> - Tanggal shift</li>
+                <li><code>jam_mulai</code> - Waktu mulai shift (HH:MM:SS)</li>
+                <li><code>jam_tutup</code> - Waktu tutup shift (HH:MM:SS)</li>
+                <li><code>gaji_pokok</code> - Gaji pokok berdasarkan durasi (Rp 5.000/jam)</li>
+                <li><code>total_bonus</code> - Total bonus dari transaksi</li>
+                <li><code>total_gaji</code> - Gaji pokok + Total bonus</li>
+            </ul>
+        </div>
+
+        <h2>📝 Cara Menggunakan</h2>
+
+        <div class="steps">
+            <h3>Langkah-langkah:</h3>
+            <ol>
+                <li>Buka halaman <strong>monitor.html</strong> di browser</li>
+                <li>Scroll ke section <strong>"Gaji Kasir (Angel)"</strong></li>
+                <li>Pilih periode yang diinginkan menggunakan tombol filter</li>
+                <li>Data akan otomatis dimuat dari database</li>
+                <li>Lihat ringkasan di baris TOTAL</li>
+            </ol>
+        </div>
+
+        <h2>⚠️ Catatan Penting</h2>
+
+        <div class="feature-box">
+            <ul>
+                <li>Tabel hanya menampilkan shift yang sudah <strong>ditutup</strong> (memiliki jam_tutup)</li>
+                <li>Data akan muncul setelah kasir melakukan "Tutup Shift" dari <code>index.html</code></li>
+                <li>Perhitungan durasi mengabaikan detik (hanya jam dan menit)</li>
+                <li>Format mata uang: <strong>Rp X.XXX</strong> dengan pemisah ribuan</li>
+                <li>Filter "Bulan Ini" adalah default saat halaman pertama dibuka</li>
+            </ul>
+        </div>
+
+        <h2>🎨 Styling</h2>
+
+        <div class="feature-box">
+            <h3>Baris TOTAL</h3>
+            <p>Baris total memiliki styling khusus untuk membedakannya:</p>
+            <ul>
+                <li>Border atas dengan warna accent (#26a69a)</li>
+                <li>Font bold</li>
+                <li>Warna teks accent</li>
+                <li>Background highlight</li>
+            </ul>
+        </div>
+
+        <h2>✅ File yang Dimodifikasi</h2>
+
+        <div class="steps">
+            <ol>
+                <li><code>monitor.html</code> - Menambahkan section tabel gaji baru</li>
+                <li><code>javascript/monitor.js</code> - Menambahkan fungsi <code>renderSalary()</code></li>
+                <li><code>css/monitor.css</code> - Menambahkan styling untuk baris total</li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 40px; padding: 20px; background: #e8f5e9; border-radius: 8px; text-align: center;">
+            <h3 style="margin-top: 0; color: #2e7d32;">✨ Fitur Siap Digunakan!</h3>
+            <p style="margin-bottom: 0;">Tabel gaji kasir Angel sudah terintegrasi penuh dengan sistem monitoring.</p>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center; color: #777; font-size: 14px;">
+            <p>Dokumentasi dibuat: 13 November 2025</p>
+            <p>Project: Tokopercetakan21 Update</p>
+        </div>
+    </div>
+</body>
+</html>

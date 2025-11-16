@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Percetakan 21 — Monitoring</title>
+    <link rel="stylesheet" href="css/monitor.css">
+</head>
+<body>
+            <header>
+                <div class="title">Percetakan 21 — Monitoring Transaksi & Order</div>
+                <div class="controls">
+                    <button id="refreshBtn">Refresh</button>
+                    <button id="downloadBtn" class="btn-download">Download Data</button>
+                </div>
+            </header>    
+        <main class="container">
+            <section class="card">
+                <div class="card-header">
+                    <h3>Gaji Kasir (Angel)</h3>
+                    <div class="filter-controls" id="salary-filter">
+                        <button class="filter-btn" data-period="today">Hari Ini</button>
+                        <button class="filter-btn" data-period="week">Pekan Ini</button>
+                        <button class="filter-btn active" data-period="month">Bulan Ini</button>
+                        <button class="filter-btn" data-period="all">Semua</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="salaryTable">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Tutup</th>
+                                <th>Durasi</th>
+                                <th>Gaji Pokok</th>
+                                <th>Total Bonus</th>
+                                <th>Total Gaji</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Salary data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="card-header">
+                    <h3>Transaksi Kasir (Angel)</h3>
+                    <div class="filter-controls" id="transactions-filter">
+                        <button class="filter-btn" data-period="today">Hari Ini</button>
+                        <button class="filter-btn" data-period="week">Pekan Ini</button>
+                        <button class="filter-btn active" data-period="month">Bulan Ini</button>
+                        <button class="filter-btn" data-period="all">Semua</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="transactionsTable">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>ID Transaksi</th>
+                                <th>Nama Transaksi</th>
+                                <th>Admin</th>
+                                <th>Keterangan</th>
+                                <th>Harga</th>
+                                <th>Metode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Transactions will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+    
+            <section class="card">
+                <div class="card-header">
+                    <h3>Transaksi Owner (Ch_01)</h3>
+                    <div class="filter-controls" id="owner-transactions-filter">
+                        <button class="filter-btn" data-period="today">Hari Ini</button>
+                        <button class="filter-btn" data-period="week">Pekan Ini</button>
+                        <button class="filter-btn active" data-period="month">Bulan Ini</button>
+                        <button class="filter-btn" data-period="all">Semua</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="ownerTransactionsTable">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>ID Transaksi</th>
+                                <th>Nama Transaksi</th>
+                                <th>Admin</th>
+                                <th>Keterangan</th>
+                                <th>Harga</th>
+                                <th>Metode</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Owner Transactions will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+    
+            <section class="card" id="ordersCard">
+                <div class="card-header">
+                    <h3>Orderan</h3>
+                    <div class="filter-controls" id="orders-filter">
+                        <button class="filter-btn" data-period="today">Hari Ini</button>
+                        <button class="filter-btn" data-period="week">Pekan Ini</button>
+                        <button class="filter-btn active" data-period="month">Bulan Ini</button>
+                        <button class="filter-btn" data-period="all">Semua</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="ordersTable">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>ID Order</th>
+                                <th>Nama Pelanggan</th>
+                                <th>Admin</th>
+                                <th>Total Harga</th>
+                                <th>Metode Bayar</th>
+                                <th>Panjar</th>
+                                <th>Sisa</th>
+                                <th>Janji Selesai</th>
+                                <th>Items</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+        <script src="javascript/pdf-generator.js?v=2.0"></script>
+        <script src="javascript/monitor.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Test Monitor - Percetakan 21</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>Test Monitor Page Structure</h1>
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(message, success) {
+            const div = document.createElement('div');
+            div.className = `status ${success ? 'success' : 'error'}`;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        // Check if monitor.html exists and has the new salary table
+        fetch('/monitor.html')
+            .then(r => r.text())
+            .then(html => {
+                if (html.includes('salaryTable')) {
+                    addResult('✓ Tabel Gaji ditemukan di monitor.html', true);
+                } else {
+                    addResult('✗ Tabel Gaji tidak ditemukan di monitor.html', false);
+                }
+                
+                if (html.includes('salary-filter')) {
+                    addResult('✓ Filter Gaji ditemukan', true);
+                } else {
+                    addResult('✗ Filter Gaji tidak ditemukan', false);
+                }
+                
+                if (html.includes('Gaji Kasir (Angel)')) {
+                    addResult('✓ Header tabel gaji ditemukan', true);
+                } else {
+                    addResult('✗ Header tabel gaji tidak ditemukan', false);
+                }
+            })
+            .catch(err => {
+                addResult('✗ Gagal memuat monitor.html: ' + err.message, false);
+            });
+            
+        // Check if monitor.js has renderSalary function
+        fetch('/javascript/monitor.js')
+            .then(r => r.text())
+            .then(js => {
+                if (js.includes('renderSalary')) {
+                    addResult('✓ Fungsi renderSalary ditemukan', true);
+                } else {
+                    addResult('✗ Fungsi renderSalary tidak ditemukan', false);
+                }
+                
+                if (js.includes('salaryTableBody')) {
+                    addResult('✓ Variable salaryTableBody ditemukan', true);
+                } else {
+                    addResult('✗ Variable salaryTableBody tidak ditemukan', false);
+                }
+                
+                if (js.includes('fetchData(\'shifts\'')) {
+                    addResult('✓ Pemanggilan fetchData untuk shifts ditemukan', true);
+                } else {
+                    addResult('✗ Pemanggilan fetchData untuk shifts tidak ditemukan', false);
+                }
+            })
+            .catch(err => {
+                addResult('✗ Gagal memuat monitor.js: ' + err.message, false);
+            });
+    </script>
+</body>
+</html>

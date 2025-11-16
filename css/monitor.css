@@ -1,0 +1,318 @@
+:root{
+    --bg:#1a2b3c;
+    --card:#2c3e50;
+    --ink:#ecf0f1;
+    --line:#34495e;
+    --accent:#26a69a;
+    --accent-600:#00897b;
+    --danger:#e74c3c;
+    --link:#3498db;
+    --ok:#27ae60;
+    --warn:#f39c12
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Roboto,ui-sans-serif,system-ui,Segoe UI,Arial;
+    background:var(--bg);
+    color:var(--ink);
+    padding: 20px;
+}
+
+header{
+    display:flex;
+    gap:15px; /* Slightly reduced gap */
+    align-items:center;
+    padding:12px 16px;
+    background:var(--card);
+    border-bottom:1px solid #141a2c;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+}
+
+header .title{
+    flex:1 1 auto; /* Allow title to grow but also shrink */
+    font-weight:900;
+    font-size: 1.5em;
+    min-width: 200px; /* Ensure title doesn't get too small */
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap; /* Allow controls to wrap */
+    margin-left: auto; /* Pushes controls to the right */
+}
+
+.controls label {
+    font-size: 0.9em;
+    opacity: 0.9;
+    flex-shrink: 0; /* Prevent label from shrinking too much */
+}
+
+.controls input[type="date"],
+.controls button {
+    flex: 1 1 auto; /* Allow inputs/buttons to grow and shrink */
+    min-width: 120px; /* Ensure they don't get too small */
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--line);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+.controls button {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+}
+
+.controls button:hover {
+    background: var(--accent-600);
+}
+
+.btn-delete {
+    background-color: var(--danger) !important;
+    border-color: #c0392b !important;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b !important;
+}
+
+.btn-download {
+    background-color: var(--warn) !important;
+    border-color: #d35400 !important;
+    color: #000 !important;
+}
+
+
+/* Adjust body padding for very small screens */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    header {
+        padding: 10px;
+    }
+    header .title {
+        font-size: 1.2em;
+    }
+    .controls {
+        margin-top: 5px;
+        margin-left: 0;
+    }
+    .card {
+        padding: 10px;
+    }
+}
+
+.container{
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:20px;
+    padding:0;
+    max-width: 1600px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 300px;
+}
+
+.card .table-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card table {
+    flex: 1;
+}
+
+h3{
+    margin:0 0 10px;
+    color: var(--accent);
+}
+
+.table-container {
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+/* Limit visible rows to approximately 6 rows */
+.card .table-container {
+    max-height: calc(6 * 44px + 44px);
+    /* 6 rows * ~44px per row + 44px for header */
+    overflow-y: auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+    font-size: 0.9em;
+}
+
+th,td{
+    border:1px solid var(--line);
+    padding:8px;
+    text-align:left;
+    vertical-align: top;
+}
+
+th{
+    background:#1e2438;
+    font-weight: 700;
+    color: var(--ink);
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensure it stays above scrolling content */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #22303f; /* Slightly different background for even rows */
+}
+
+tbody tr:hover {
+    background-color: #3a4d60; /* Highlight on hover */
+}
+
+td.numeric {
+    text-align: right;
+    font-family: monospace;
+}
+
+td.center {
+    text-align: center;
+}
+
+.item-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85em;
+}
+
+.item-list li {
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    border-bottom: 1px dotted rgba(255,255,255,0.1);
+}
+
+.item-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+    @media (min-width: 1024px) {
+        .container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        /* Gaji Angel - Top left */
+        .container > section:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        
+        /* Transaksi Angel - Full width di row 2 (LEBAR seperti orderan) */
+        .container > section:nth-child(2) {
+            grid-column: 1 / -1;
+            grid-row: 2;
+        }
+        
+        /* Transaksi Owner - Top right */
+        .container > section:nth-child(3) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        /* Orders - Full width at bottom */
+        #ordersCard {
+            grid-column: 1 / -1;
+            grid-row: 3;
+        }
+    }
+    
+    @media (min-width: 1400px) {
+        .container {
+            gap: 24px;
+        }
+        
+        .table-container {
+            max-height: 400px;
+        }
+    }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card-header h3 {
+    margin: 0;
+}
+
+.filter-controls {
+    display: flex;
+    gap: 8px;
+    background-color: var(--bg);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--line);
+    background-color: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: var(--line);
+}
+
+.filter-btn.active {
+    background-color: var(--accent);
+    border-color: var(--accent-600);
+    color: #fff;
+    font-weight: 700;
+}
+
+#salaryTable tbody tr:last-child {
+    border-top: 2px solid var(--accent);
+}
+
+#salaryTable tbody tr:last-child td {
+    font-weight: 700;
+    color: var(--accent);
+}
