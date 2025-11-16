@@ -4,16 +4,25 @@
     {
       "src": "api/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "css/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "javascript/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.js"
-    },
     { "src": "/", "dest": "/index.html" },
     { "src": "/monitor", "dest": "/monitor.html" },
     { "src": "/owner", "dest": "/owner.html" },
-    { "src": "/test-monitor", "dest": "/test-monitor.html" }
+    { "src": "/test-monitor", "dest": "/test-monitor.html" },
+    { "src": "/api", "dest": "/api/index.js" }
   ]
 }
