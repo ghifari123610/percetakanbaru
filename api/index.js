@@ -267,6 +267,31 @@ app.post('/api/cron/delete-old-data', async (req, res) => {
   }
 });
 
+// New: Endpoint to delete ALL data (transactions, orders, shifts)
+app.delete('/api/data', async (req, res) => {
+  try {
+    const db = client.db("tokopercetakan21");
+
+    const deletedTransactions = await db.collection('transactions').deleteMany({});
+    const deletedOrders = await db.collection('orders').deleteMany({});
+    const deletedShifts = await db.collection('shifts').deleteMany({});
+
+    const result = {
+      message: 'All data (transactions, orders, shifts) deleted successfully.',
+      deletedTransactionsCount: deletedTransactions.deletedCount,
+      deletedOrdersCount: deletedOrders.deletedCount,
+      deletedShiftsCount: deletedShifts.deletedCount,
+    };
+
+    console.log('[DELETE ALL DATA] Result:', result);
+    res.status(200).json(result);
+
+  } catch (error) {
+    console.error('[DELETE ALL DATA] Error during all data deletion:', error);
+    res.status(500).json({ message: 'Internal server error during all data deletion.' });
+  }
+});
+
 
 // 4. Static File Serving (for local development)
 // This should come after API routes

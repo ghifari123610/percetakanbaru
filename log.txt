@@ -1,0 +1,78 @@
+Nov 17 08:06:45.55
+GET
+404
+tokopercetakan21.vercel.app
+/api/transactions
+Nov 17 08:06:45.55
+GET
+404
+tokopercetakan21.vercel.app
+/api/orders
+Nov 17 08:06:45.55
+GET
+404
+tokopercetakan21.vercel.app
+/api/shifts
+Nov 17 08:06:45.55
+GET
+404
+tokopercetakan21.vercel.app
+/api/transactions
+Nov 17 08:02:25.45
+GET
+401
+tokopercetakan21-cwfyutv2l-ghifari123610s-projects.vercel.app
+/
+Nov 17 08:02:25.05
+GET
+404
+tokopercetakan21-cwfyutv2l-ghifari123610s-projects.vercel.app
+/favicon.png
+Nov 17 08:02:25.02
+GET
+404
+tokopercetakan21-cwfyutv2l-ghifari123610s-projects.vercel.app
+/favicon.ico
+Nov 17 08:02:13.29
+POST
+200
+tokopercetakan21.vercel.app
+/api
+3
+Skipping Google Sheets forwarding as it is temporarily disabled.
+Nov 17 08:01:50.27
+GET
+404
+tokopercetakan21.vercel.app
+/api/shifts
+Nov 17 08:01:50.26
+GET
+404
+tokopercetakan21.vercel.app
+/api/transactions
+Nov 17 08:01:50.26
+GET
+404
+tokopercetakan21.vercel.app
+/api/transactions
+Nov 17 08:01:50.26
+GET
+404
+tokopercetakan21.vercel.app
+/api/orders
+Nov 17 08:01:43.68
+GET
+404
+tokopercetakan21.vercel.app
+/favicon.ico
+Nov 17 08:01:34.66
+GET
+404
+tokopercetakan21-cwfyutv2l-ghifari123610s-projects.vercel.app
+/favicon.ico
+Nov 17 08:01:33.36
+GET
+404
+tokopercetakan21-cwfyutv2l-ghifari123610s-projects.vercel.app
+/favicon.ico
+No more logs to show within selected timeline

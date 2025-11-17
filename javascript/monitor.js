@@ -332,6 +332,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function groupTransactionItemsForPdf(ket) {
+        if (typeof ket !== 'string' || !ket.includes('|')) {
+            return ket;
+        }
+
+        const parts = ket.split('|');
+        const itemPart = parts[0];
+        const rest = parts.slice(1).join('|');
+
+        const itemMatch = itemPart.match(/\[.*?\]\s*(.*)/);
+        if (!itemMatch || !itemMatch[1]) {
+            return ket;
+        }
+
+        const itemsStr = itemMatch[1].trim();
+        if (!itemsStr) {
+            return ket;
+        }
+
+        const items = itemsStr.split(',').map(item => item.trim());
+        const counts = {};
+        items.forEach(item => {
+            // Further clean up item name from potential leftover HTML
+            const cleanItem = item.replace(/<[^>]*>/g, '').replace(/x\d+/, '').trim();
+            counts[cleanItem] = (counts[cleanItem] || 0) + 1;
+        });
+
+        const groupedItems = Object.entries(counts).map(([item, count]) => {
+            if (count > 1) {
+                return `${item} x${count}`;
+            }
+            return item;
+        }).join(', ');
+
+        const customerPart = itemPart.substring(0, itemMatch.index + itemMatch[0].length - itemsStr.length);
+        return `${customerPart}${groupedItems} |${rest}`;
+    }
+
     // --- DOWNLOAD/DELETE HANDLERS ---
     function downloadPdfReport(data, reportTitle, filenameSuffix) {
         const doc = new jsPDF();
@@ -369,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
             t.timestamp || '', 
             t.tx_id || '', 
             t.nama_tx || '', 
-            groupTransactionItems(t.ket || ''), 
+            groupTransactionItemsForPdf(t.ket || ''), 
             IDR(t.harga || 0), 
             t.metode || ''
         ]);
@@ -377,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             t.timestamp || '', 
             t.tx_id || '', 
             t.nama_tx || '', 
-            groupTransactionItems(t.ket || ''), 
+            groupTransactionItemsForPdf(t.ket || ''), 
             IDR(t.harga || 0), 
             t.metode || ''
         ]);
@@ -529,6 +567,46 @@ document.addEventListener('DOMContentLoaded', () => {
     setupFilterControls(salaryFilter, (period) => fetchData('shifts', salaryTableBody, renderSalary, 'Angel', period));
     setupFilterControls(ownerTransactionsFilter, (period) => fetchData('transactions', ownerTransactionsTableBody, renderTransactions, 'Ch_01', period));
     setupFilterControls(ordersFilter, (period) => fetchData('orders', ordersTableBody, renderOrders, null, period));
+
+    const deleteAllDataBtn = document.getElementById('delete-all-data-btn');
+    if (deleteAllDataBtn) {
+        deleteAllDataBtn.addEventListener('click', async () => {
+            const isConfirmed = confirm('PERINGATAN KERAS: Anda akan menghapus SEMUA data transaksi, pesanan, dan shift secara permanen. Aksi ini TIDAK DAPAT DIBATALKAN. Apakah Anda yakin ingin melanjutkan?');
+            
+            if (isConfirmed) {
+                const confirmationText = prompt("Untuk mengkonfirmasi penghapusan SEMUA data, ketik 'HAPUS SEMUA DATA' di kolom di bawah ini:");
+                if (confirmationText === 'HAPUS SEMUA DATA') {
+                    try {
+                        deleteAllDataBtn.disabled = true;
+                        deleteAllDataBtn.textContent = 'Menghapus...';
+                        const response = await fetch(`${API_BASE_URL}/api/data`, {
+                            method: 'DELETE',
+                            headers: { 'Content-Type': 'application/json' },
+                        });
+
+                        if (response.ok) {
+                            const result = await response.json();
+                            alert(`Penghapusan data berhasil:\n${result.deletedTransactionsCount} transaksi dihapus.\n${result.deletedOrdersCount} order dihapus.\n${result.deletedShiftsCount} shift dihapus.`);
+                            loadAllData(); // Reload all data after deletion
+                        } else {
+                            const errorData = await response.json();
+                            alert(`Gagal menghapus data: ${errorData.message || response.statusText}`);
+                        }
+                    } catch (error) {
+                        console.error('Error deleting all data:', error);
+                        alert('Terjadi kesalahan saat menghapus semua data.');
+                    } finally {
+                        deleteAllDataBtn.disabled = false;
+                        deleteAllDataBtn.textContent = 'Hapus Semua Data';
+                    }
+                } else {
+                    alert('Konfirmasi salah. Penghapusan data dibatalkan.');
+                }
+            } else {
+                alert('Penghapusan data dibatalkan.');
+            }
+        });
+    }
 
     loadAllData();
 

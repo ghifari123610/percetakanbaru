@@ -316,3 +316,14 @@ td.center {
     font-weight: 700;
     color: var(--accent);
 }
+
+.danger-button {
+    background-color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: #fff !important;
+}
+
+.danger-button:hover {
+    background-color: #c0392b !important; /* Darker red on hover */
+    border-color: #c0392b !important;
+}
