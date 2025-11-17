@@ -19,10 +19,16 @@
     }
   ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
     { "src": "/", "dest": "/index.html" },
     { "src": "/monitor", "dest": "/monitor.html" },
     { "src": "/owner", "dest": "/owner.html" },
-    { "src": "/test-monitor", "dest": "/test-monitor.html" },
-    { "src": "/api", "dest": "/api/index.js" }
+    { "src": "/test-monitor", "dest": "/test-monitor.html" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/delete-old-data",
+      "schedule": "0 0 * * *"
+    }
   ]
 }
